@@ -1492,6 +1492,112 @@
     padding:0.65rem; font-size:0.88rem; cursor:pointer;
     font-family:'Noto Sans KR',sans-serif;
   }
+    /* ══ 모더레이션 (App Store 심사지침 1.2 대응) ══ */
+    .mod-btn {
+      background:transparent; border:1px solid var(--border-muted); color:var(--muted);
+      border-radius:8px; padding:0.22rem 0.5rem; font-size:0.72rem; font-family:inherit;
+      cursor:pointer; white-space:nowrap; transition:all .15s;
+    }
+    .mod-btn:hover { color:var(--crimson-light); border-color:var(--crimson-light); }
+    .mod-btn.blocked-state { color:var(--gold-light); border-color:var(--gold-dim); }
+    .comment-mod {
+      background:none; border:none; color:var(--muted); font-size:0.7rem;
+      cursor:pointer; padding:0 0.25rem; font-family:inherit;
+    }
+    .comment-mod:hover { color:var(--crimson-light); }
+
+    /* 신고 사유 모달 */
+    .mod-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.72); z-index:1400;
+      opacity:0; pointer-events:none; transition:opacity .2s;
+    }
+    .mod-overlay.open { opacity:1; pointer-events:auto; }
+    .mod-sheet {
+      position:fixed; left:50%; bottom:0; transform:translate(-50%,100%);
+      width:min(520px,100%); background:var(--surface-card);
+      border-radius:18px 18px 0 0; border:1px solid var(--border-subtle); border-bottom:none;
+      z-index:1401; transition:transform .25s cubic-bezier(.2,.8,.2,1);
+      max-height:86vh; overflow-y:auto; padding-bottom:env(safe-area-inset-bottom,0);
+    }
+    .mod-sheet.open { transform:translate(-50%,0); }
+    .mod-sheet-header {
+      display:flex; align-items:center; justify-content:space-between;
+      padding:1rem 1.15rem 0.75rem; border-bottom:1px solid var(--border-subtle);
+      position:sticky; top:0; background:var(--surface-card); z-index:2;
+    }
+    .mod-sheet-title { font-weight:700; color:var(--text-primary); font-size:0.98rem; }
+    .mod-close-btn {
+      background:none; border:none; color:var(--muted); font-size:1.15rem; cursor:pointer; padding:0.2rem 0.4rem;
+    }
+    .mod-body { padding:1rem 1.15rem 1.5rem; }
+    .mod-lead { color:var(--muted); font-size:0.84rem; line-height:1.6; margin-bottom:0.9rem; }
+    .mod-reason {
+      display:block; width:100%; text-align:left; background:var(--surface-input);
+      border:1px solid var(--border-subtle); border-radius:10px; color:var(--text);
+      padding:0.7rem 0.85rem; margin-bottom:0.5rem; font-size:0.88rem;
+      font-family:inherit; cursor:pointer; transition:all .15s;
+    }
+    .mod-reason:hover, .mod-reason.selected {
+      border-color:var(--gold); background:var(--surface-luxury); color:var(--text-primary);
+    }
+    .mod-actions { display:flex; gap:0.5rem; margin-top:0.9rem; }
+    .mod-submit {
+      flex:1; background:var(--crimson); color:#fff; border:none; border-radius:10px;
+      padding:0.75rem; font-size:0.9rem; font-weight:700; font-family:inherit; cursor:pointer;
+    }
+    .mod-submit:disabled { opacity:0.4; cursor:not-allowed; }
+    .mod-cancel {
+      flex:0 0 auto; background:transparent; color:var(--muted);
+      border:1px solid var(--border-muted); border-radius:10px;
+      padding:0.75rem 1.1rem; font-size:0.9rem; font-family:inherit; cursor:pointer;
+    }
+
+    /* 안전 센터 */
+    .safety-section { margin-bottom:1.4rem; }
+    .safety-section-title {
+      font-weight:700; color:var(--gold-light); font-size:0.9rem; margin-bottom:0.5rem;
+      display:flex; align-items:center; gap:0.4rem;
+    }
+    .safety-text { color:var(--muted); font-size:0.83rem; line-height:1.7; }
+    .safety-text strong { color:var(--text-primary); font-weight:600; }
+    .safety-text a { color:var(--gold-light); }
+    .safety-card {
+      background:var(--surface-input); border:1px solid var(--border-subtle);
+      border-radius:10px; padding:0.8rem 0.95rem; margin-top:0.5rem;
+    }
+    .blocked-row {
+      display:flex; align-items:center; justify-content:space-between; gap:0.6rem;
+      padding:0.55rem 0; border-bottom:1px solid var(--border-subtle);
+    }
+    .blocked-row:last-child { border-bottom:none; }
+    .blocked-name { color:var(--text); font-size:0.86rem; }
+    .unblock-btn {
+      background:transparent; border:1px solid var(--border-muted); color:var(--gold-light);
+      border-radius:8px; padding:0.28rem 0.6rem; font-size:0.76rem; font-family:inherit; cursor:pointer;
+    }
+    .danger-btn {
+      width:100%; background:transparent; border:1px solid var(--crimson-light);
+      color:var(--crimson-light); border-radius:10px; padding:0.7rem;
+      font-size:0.86rem; font-weight:600; font-family:inherit; cursor:pointer; margin-top:0.5rem;
+    }
+    .danger-btn:hover { background:rgba(181,34,96,0.12); }
+    .safety-trigger {
+      background:none; border:none; color:var(--muted); font-size:0.78rem;
+      font-family:inherit; cursor:pointer; text-decoration:underline; padding:0.3rem;
+    }
+    .site-footer {
+      text-align:center; padding:1.6rem 1rem 6.5rem; color:var(--muted); font-size:0.76rem; line-height:2;
+    }
+    .site-footer a { color:var(--muted); text-decoration:underline; }
+    .filter-warn {
+      background:rgba(181,34,96,0.12); border:1px solid var(--crimson-light);
+      color:#f7b8cf; border-radius:10px; padding:0.6rem 0.8rem;
+      font-size:0.82rem; line-height:1.6; margin-bottom:0.6rem;
+    }
+    .masked-post {
+      color:var(--muted); font-style:italic; font-size:0.84rem;
+      padding:0.5rem 0; line-height:1.6;
+    }
   </style>
 </head>
 <body>
@@ -2048,6 +2154,13 @@
   </div>
 </div>
 
+<!-- FOOTER — 안전·약관·연락처 (심사지침 1.2 ⑷ 연락처 게시) -->
+<footer class="site-footer">
+  <button class="safety-trigger" onclick="openSafetyCenter()">🛡️ 안전 센터 · 신고 · 차단 관리</button><br>
+  <a href="terms.html">이용약관</a> · <a href="privacy.html">개인정보 처리방침</a><br>
+  운영자 이승목 · <a href="mailto:ohlee2026@gmail.com">ohlee2026@gmail.com</a> (24시간 이내 답변)
+</footer>
+
 <!-- BOTTOM BAR (mobile) -->
 <div class="bottom-bar">
   <div class="bottom-bar-inner">
@@ -2060,6 +2173,88 @@
     <a href="http://pf.kakao.com/_SxixjhG" target="_blank" rel="noopener noreferrer" class="bottom-bar-btn kakao">
       <span class="btn-icon">💬</span>채널
     </a>
+  </div>
+</div>
+
+<!-- ══ 신고 시트 (심사지침 1.2 — 신고 기능) ══ -->
+<div class="mod-overlay" id="mod-overlay" onclick="closeReportSheet()"></div>
+<div class="mod-sheet" id="mod-sheet" role="dialog" aria-modal="true" aria-label="콘텐츠 신고">
+  <div class="mod-sheet-header">
+    <span class="mod-sheet-title">🚩 신고하기</span>
+    <button class="mod-close-btn" onclick="closeReportSheet()" aria-label="닫기">✕</button>
+  </div>
+  <div class="mod-body">
+    <p class="mod-lead">
+      신고 사유를 선택해 주세요. 운영자가 <strong style="color:var(--gold-light)">24시간 이내</strong>에
+      확인하고 조치합니다. 신고하신 콘텐츠는 이 기기에서 즉시 숨겨집니다.
+    </p>
+    <div id="mod-reason-list"></div>
+    <div class="mod-actions">
+      <button class="mod-cancel" onclick="closeReportSheet()">취소</button>
+      <button class="mod-submit" id="mod-submit-btn" onclick="submitReport()" disabled>신고 접수</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 안전 센터 (차단 관리 · 연락처 · 데이터 삭제) ══ -->
+<div class="mod-overlay" id="safety-overlay" onclick="closeSafetyCenter()"></div>
+<div class="mod-sheet" id="safety-sheet" role="dialog" aria-modal="true" aria-label="안전 센터">
+  <div class="mod-sheet-header">
+    <span class="mod-sheet-title">🛡️ 안전 센터</span>
+    <button class="mod-close-btn" onclick="closeSafetyCenter()" aria-label="닫기">✕</button>
+  </div>
+  <div class="mod-body">
+
+    <div class="safety-section">
+      <div class="safety-section-title">🚩 신고</div>
+      <div class="safety-text">
+        불쾌한 묵상이나 댓글은 각 글의 <strong>신고</strong> 버튼으로 알려주세요.
+        운영자가 <strong>24시간 이내</strong>에 확인하고, 위반 콘텐츠는 삭제하며
+        반복 위반 사용자는 이용을 제한합니다.
+      </div>
+    </div>
+
+    <div class="safety-section">
+      <div class="safety-section-title">🚫 차단한 사용자</div>
+      <div class="safety-text" style="margin-bottom:0.5rem">
+        차단한 사용자의 묵상과 댓글은 보이지 않습니다.
+        <br><span style="opacity:0.75">※ 이 앱은 로그인이 없어, 차단 목록은 <strong>이 기기에만</strong> 저장되며 다른 기기와 공유되지 않습니다.</span>
+      </div>
+      <div class="safety-card" id="blocked-list"></div>
+    </div>
+
+    <div class="safety-section">
+      <div class="safety-section-title">🧹 자동 필터</div>
+      <div class="safety-text">
+        욕설·혐오·성적 표현이 포함된 글과 댓글은 <strong>게시되지 않도록 자동으로 차단</strong>합니다.
+        이미 올라온 글에 해당 표현이 있으면 가려서 표시합니다.
+      </div>
+    </div>
+
+    <div class="safety-section">
+      <div class="safety-section-title">📮 운영자 연락처</div>
+      <div class="safety-card safety-text">
+        <strong>이승목</strong><br>
+        <a href="mailto:ohlee2026@gmail.com">ohlee2026@gmail.com</a><br>
+        신고·문의·삭제 요청에 <strong>24시간 이내</strong> 답변드립니다.
+      </div>
+    </div>
+
+    <div class="safety-section">
+      <div class="safety-section-title">🗑️ 내 데이터 삭제</div>
+      <div class="safety-text">
+        내가 올린 모든 묵상·댓글과 이 기기에 저장된 이름·서약·기록을 한 번에 삭제합니다.
+        <strong>되돌릴 수 없습니다.</strong>
+      </div>
+      <button class="danger-btn" onclick="deleteAllMyData()">내 데이터 전체 삭제</button>
+    </div>
+
+    <div class="safety-section" style="margin-bottom:0">
+      <div class="safety-text">
+        <a href="terms.html">이용약관</a> · <a href="privacy.html">개인정보 처리방침</a>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -2097,6 +2292,295 @@ function initFirebase() {
     document.getElementById('setup-banner').style.display = 'block';
     renderDemoFeed();
   }
+}
+
+// ════════════════════════════════════════════════════════════════
+// 모더레이션 — App Store 심사지침 1.2 (사용자 생성 콘텐츠) 대응
+//   ⑴ 금칙어 필터  ⑵ 신고 + 운영자 큐  ⑶ 사용자 차단  ⑷ 연락처 게시
+// ⚠ 이 앱은 로그인이 없다(익명 UUID). 차단은 기기 로컬(localStorage)에
+//   저장되며 기기 간 동기화되지 않는다 — 안전 센터에 그대로 고지한다.
+// ════════════════════════════════════════════════════════════════
+
+const MOD_CONTACT_EMAIL = 'ohlee2026@gmail.com';
+const MOD_RESPONSE_HOURS = 24;
+
+const BLOCK_KEY   = 'wtd_blocked_v1';   // [{userId, name, at}]
+const REPORTED_KEY= 'wtd_reported_v1';  // [targetKey, ...] 신고 후 로컬 즉시 숨김
+
+// ── ⑴ 금칙어 필터 ────────────────────────────────────────────────
+// 기초 필터다(완전하지 않다). 우회를 막기 위해 자모·공백·반복·기호를
+// 정규화한 뒤 대조한다. 목록은 운영하며 계속 보강한다.
+// ★오탐 주의(2026-08-06 실측 교정): 한국어 묵상 글에서 자연스럽게 쓰이는 말은
+//   목록에서 뺐다. 뺀 것과 이유 — '보지'(말씀을 보지 못했다) '자지'(잠을 자지 못하고)
+//   '뒤져'(성경을 뒤져보다) '꺼져'(불이 꺼져) '닥쳐'(닥쳐올 미래) '졸라'(아이가 졸라서)
+//   '새끼' 단독(강아지 새끼). 모두 정상 문장을 막던 항목이라 제거했다.
+//   ⇒ 필터는 "덜 잡더라도 정상 묵상을 막지 않는다"를 우선한다. 놓친 것은 신고로 잡는다.
+const BANNED_WORDS = [
+  // 욕설·비속어
+  '시발','씨발','씨빨','십새','ㅅㅂ','ㅆㅂ','병신','븅신','ㅂㅅ','ㅄ','지랄','ㅈㄹ',
+  '개새끼','새끼야','씨새끼','좆','좆같','존나','니미','니애미','애미뒤','엠창',
+  '미친놈','미친년','썅','쌍놈','쌍년','후레자식','호로새끼','입닥쳐','꺼져버려',
+  // 혐오·차별
+  '한남충','김치녀','된장녀','맘충','급식충','틀딱','일베','보슬아치',
+  '장애인새끼','병신새끼','흑형','짱깨','쪽바리','조센징',
+  // 성적 표현
+  '섹스','야동','자위행위','꼴리','발기','porn','sex',
+  // 영문 욕설
+  'fuck','shit','bitch','asshole','bastard','cunt','dick','pussy',
+  // 자살·자해 조장 (게시 차단 후 안내)
+  '자살해','죽어버려','목매달','자해해',
+];
+
+// 정규화: 소문자 → 공백·기호·숫자 제거 → 반복문자 1개로 축약
+// (우회 시도 방어: "시 발" "시*발" "시1발" "fuuuck" "ffuucckk")
+function modNormalize(text) {
+  return String(text || '')
+    .toLowerCase()
+    .replace(/[\s\.\,\-\_\*\~\^\!\?\|\/\\\(\)\[\]\{\}<>@#\$%&\+\=:;'"`0-9]/g, '')
+    .replace(/(.)\1+/g, '$1');
+}
+
+// 걸린 금칙어 목록을 돌려준다(빈 배열 = 통과)
+function modScan(text) {
+  const n = modNormalize(text);
+  if (!n) return [];
+  return BANNED_WORDS.filter(w => n.includes(modNormalize(w)));
+}
+
+// 표시용 마스킹 — 이미 올라간 옛 글에 금칙어가 있을 때 사용
+function modMask(text) {
+  let out = String(text || '');
+  BANNED_WORDS.forEach(w => {
+    if (!w) return;
+    try {
+      const re = new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      out = out.replace(re, '*'.repeat(Math.max(2, w.length)));
+    } catch(e) { /* 정규식 실패는 무시 */ }
+  });
+  return out;
+}
+
+// ── ⑶ 차단 ──────────────────────────────────────────────────────
+function modGetBlocked() {
+  try { return JSON.parse(localStorage.getItem(BLOCK_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+function modIsBlocked(userId, name) {
+  if (!userId && !name) return false;
+  return modGetBlocked().some(b =>
+    (userId && b.userId && b.userId === userId) ||
+    (!userId && name && b.name === name)   // 구 게시물(userId 없음) 하위호환
+  );
+}
+function modBlockUser(userId, name) {
+  if (!userId && !name) return;
+  const me = modMyPledge();
+  if (userId && me.userId && userId === me.userId) {
+    alert('자기 자신은 차단할 수 없습니다.');
+    return;
+  }
+  if (!confirm(`'${name || '이 사용자'}'님을 차단할까요?\n\n차단하면 이 사용자의 묵상과 댓글이 더 이상 보이지 않습니다.\n안전 센터에서 언제든 해제할 수 있습니다.`)) return;
+  const list = modGetBlocked();
+  if (!list.some(b => b.userId === userId && b.name === name)) {
+    list.push({ userId: userId || '', name: name || '', at: new Date().toISOString() });
+    localStorage.setItem(BLOCK_KEY, JSON.stringify(list));
+  }
+  renderFilteredFeed();
+  alert('차단했습니다. 이 사용자의 글이 숨겨집니다.');
+}
+function modUnblock(idx) {
+  const list = modGetBlocked();
+  list.splice(idx, 1);
+  localStorage.setItem(BLOCK_KEY, JSON.stringify(list));
+  modRenderBlockedList();
+  renderFilteredFeed();
+}
+
+// ── 신고 로컬 숨김 ───────────────────────────────────────────────
+function modGetReported() {
+  try { return JSON.parse(localStorage.getItem(REPORTED_KEY) || '[]'); }
+  catch(e) { return []; }
+}
+function modMarkReported(key) {
+  const list = modGetReported();
+  if (!list.includes(key)) { list.push(key); localStorage.setItem(REPORTED_KEY, JSON.stringify(list)); }
+}
+function modIsReported(key) { return modGetReported().includes(key); }
+
+function modMyPledge() {
+  try { return JSON.parse(localStorage.getItem('wtd_pledge_v1') || '{}'); }
+  catch(e) { return {}; }
+}
+
+// ── ⑵ 신고 ──────────────────────────────────────────────────────
+const MOD_REASONS = [
+  '욕설·비하 등 불쾌한 표현',
+  '성적·선정적 내용',
+  '폭력·자해·자살 조장',
+  '혐오·차별 발언',
+  '광고·스팸·도배',
+  '타인의 개인정보 노출',
+  '저작권 침해',
+  '기타 (운영자 검토 요청)',
+];
+let modPending = null;      // {targetType, postId, commentId, targetUserId, targetName, excerpt}
+let modSelectedReason = null;
+
+// 게시물 본문에서 신고 첨부용 발췌를 만든다(운영자 큐에서 맥락 확인용)
+function modPostExcerpt(data) {
+  const parts = [data.stop_verse, data.stay, data.step, data.prayer, data.declaration,
+                 typeof data.content === 'string' ? data.content : (data.content && data.content.free)];
+  return parts.filter(Boolean).join(' / ').slice(0, 200);
+}
+
+// 피드 캐시에서 대상 글을 찾아 신고 시트를 연다 (따옴표 이스케이프 문제 회피)
+function reportPost(postId) {
+  const hit = allPostsCache.find(p => p.id === postId);
+  const d = hit ? hit.data : {};
+  openReportSheet('post', postId, '', d.userId || '', d.name || '', modPostExcerpt(d));
+}
+// 댓글 신고 — DOM dataset에서 대상 정보를 읽는다
+function reportComment(postId, commentId) {
+  const el = document.querySelector(`.comment-item[data-comment-id="${commentId}"]`);
+  const uid = el ? (el.dataset.uid || '') : '';
+  const nm  = el ? (el.dataset.uname || '') : '';
+  const tx  = el ? (el.dataset.text || '') : '';
+  openReportSheet('comment', postId, commentId, uid, nm, tx);
+}
+
+function openReportSheet(targetType, postId, commentId, targetUserId, targetName, excerpt) {
+  modPending = { targetType, postId, commentId: commentId || '', targetUserId: targetUserId || '', targetName: targetName || '', excerpt: (excerpt || '').slice(0, 200) };
+  modSelectedReason = null;
+  const list = document.getElementById('mod-reason-list');
+  list.innerHTML = MOD_REASONS.map((r, i) =>
+    `<button type="button" class="mod-reason" data-idx="${i}" onclick="modPickReason(${i})">${r}</button>`
+  ).join('');
+  document.getElementById('mod-submit-btn').disabled = true;
+  document.getElementById('mod-overlay').classList.add('open');
+  document.getElementById('mod-sheet').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function modPickReason(i) {
+  modSelectedReason = MOD_REASONS[i];
+  document.querySelectorAll('#mod-reason-list .mod-reason').forEach(el =>
+    el.classList.toggle('selected', +el.dataset.idx === i));
+  document.getElementById('mod-submit-btn').disabled = false;
+}
+function closeReportSheet() {
+  document.getElementById('mod-overlay').classList.remove('open');
+  document.getElementById('mod-sheet').classList.remove('open');
+  document.body.style.overflow = '';
+  modPending = null; modSelectedReason = null;
+}
+async function submitReport() {
+  if (!modPending || !modSelectedReason) return;
+  const btn = document.getElementById('mod-submit-btn');
+  btn.disabled = true; btn.textContent = '접수 중...';
+  const me = modMyPledge();
+  const payload = {
+    targetType:   modPending.targetType,          // 'post' | 'comment'
+    postId:       modPending.postId,
+    commentId:    modPending.commentId,
+    targetUserId: modPending.targetUserId,
+    targetName:   modPending.targetName,
+    excerpt:      modPending.excerpt,
+    reason:       modSelectedReason,
+    reporterUserId: me.userId || '',
+    reporterName:   me.name   || '',
+    resolved:     false,
+    createdAt:    isFirebaseReady ? firebase.firestore.FieldValue.serverTimestamp() : null,
+  };
+  const key = modPending.targetType === 'comment'
+    ? `c:${modPending.postId}:${modPending.commentId}`
+    : `p:${modPending.postId}`;
+  try {
+    if (isFirebaseReady) await db.collection('reports').add(payload);
+    modMarkReported(key);
+    closeReportSheet();
+    renderFilteredFeed();
+    alert(`신고가 접수되었습니다.\n\n운영자가 ${MOD_RESPONSE_HOURS}시간 이내에 확인하고 조치합니다.\n신고하신 콘텐츠는 이 기기에서 즉시 숨겨집니다.\n\n긴급한 사안은 ${MOD_CONTACT_EMAIL} 로 연락 주세요.`);
+  } catch(e) {
+    // ★서버 접수 실패(예: Firestore 규칙에 reports 경로 미허용)에도
+    //   숨김은 반드시 적용한다 — 사용자가 불쾌한 콘텐츠를 못 가리는 상태로 두지 않는다.
+    console.error('submitReport error', e);
+    modMarkReported(key);
+    closeReportSheet();
+    renderFilteredFeed();
+    alert('신고하신 콘텐츠를 이 기기에서 숨겼습니다.\n\n' +
+          '다만 서버 접수 중 오류가 발생했습니다.\n' +
+          MOD_CONTACT_EMAIL + ' 로 알려주시면 ' + MOD_RESPONSE_HOURS + '시간 이내에 직접 처리하겠습니다.');
+  }
+}
+
+// ── 안전 센터 (차단 목록 · 연락처 · 데이터 삭제) ──────────────────
+function openSafetyCenter() {
+  modRenderBlockedList();
+  document.getElementById('safety-overlay').classList.add('open');
+  document.getElementById('safety-sheet').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSafetyCenter() {
+  document.getElementById('safety-overlay').classList.remove('open');
+  document.getElementById('safety-sheet').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function modRenderBlockedList() {
+  const el = document.getElementById('blocked-list');
+  const list = modGetBlocked();
+  if (!list.length) {
+    el.innerHTML = '<div class="safety-text">차단한 사용자가 없습니다.</div>';
+    return;
+  }
+  el.innerHTML = list.map((b, i) =>
+    `<div class="blocked-row">
+       <span class="blocked-name">${escHtml(b.name || '(이름 없음)')}</span>
+       <button class="unblock-btn" onclick="modUnblock(${i})">차단 해제</button>
+     </div>`).join('');
+}
+
+// ── 계정·데이터 삭제 (심사지침 5.1.1(v)) ─────────────────────────
+async function deleteAllMyData() {
+  const me = modMyPledge();
+  if (!me.userId && !me.name) {
+    alert('삭제할 데이터가 없습니다. 아직 서약하지 않으셨습니다.');
+    return;
+  }
+  if (!confirm('정말 삭제할까요?\n\n· 내가 올린 모든 묵상과 댓글이 서버에서 삭제됩니다\n· 이 기기에 저장된 이름·서약·기록이 모두 지워집니다\n· 되돌릴 수 없습니다')) return;
+  if (!confirm('마지막 확인입니다.\n\n삭제를 진행하려면 확인을 눌러주세요.')) return;
+
+  let posts = 0, comments = 0, failed = false;
+  if (isFirebaseReady && me.userId) {
+    try {
+      // 내 묵상 삭제 (하위 댓글 포함)
+      const snap = await db.collection('meditations').where('userId', '==', me.userId).get();
+      for (const doc of snap.docs) {
+        try {
+          const cs = await doc.ref.collection('comments').get();
+          for (const c of cs.docs) { await c.ref.delete(); comments++; }
+        } catch(e) { console.error(e); }
+        await doc.ref.delete(); posts++;
+      }
+    } catch(e) { console.error('deleteAllMyData posts', e); failed = true; }
+    try {
+      // 타인 글에 단 내 댓글 삭제 (컬렉션 그룹 색인 필요)
+      const cg = await db.collectionGroup('comments').where('userId', '==', me.userId).get();
+      for (const c of cg.docs) { await c.ref.delete(); comments++; }
+    } catch(e) {
+      console.error('deleteAllMyData collectionGroup', e);
+      failed = true;   // 색인 미생성 시 여기로 온다
+    }
+  }
+
+  // 기기 내 데이터 전삭제
+  ['wtd_pledge_v1','liked','wtd_opening_prayer','pwa_banner_dismissed',BLOCK_KEY,REPORTED_KEY]
+    .forEach(k => localStorage.removeItem(k));
+  Object.keys(localStorage).forEach(k => { if (k.startsWith('wtd_')) localStorage.removeItem(k); });
+
+  alert(
+    `삭제가 완료되었습니다.\n\n· 묵상 ${posts}개 · 댓글 ${comments}개 삭제\n· 기기 저장 정보 삭제 완료` +
+    (failed ? `\n\n⚠ 일부 항목은 서버에서 삭제하지 못했습니다.\n${MOD_CONTACT_EMAIL} 로 알려주시면 ${MOD_RESPONSE_HOURS}시간 이내에 완전히 삭제해 드립니다.` : '')
+  );
+  location.href = 'index.html';
 }
 
 // ── 날짜 관리 ──
@@ -2346,6 +2830,18 @@ async function submitPost() {
     };
   }
 
+  // ── 모더레이션 ⑴ 금칙어 필터 — 게시 전 차단 (심사지침 1.2) ──
+  const _scanTarget = MOD_TEXT_FIELDS.map(f => postData[f])
+    .concat([typeof postData.content === 'string' ? postData.content : ''])
+    .filter(Boolean).join(' ');
+  const _hits = modScan(_scanTarget);
+  if (_hits.length) {
+    alert('묵상에 부적절한 표현이 포함되어 있어 게시할 수 없습니다.\n\n' +
+          '이곳은 함께 말씀을 나누는 공간입니다. 표현을 다듬어 다시 올려주세요.\n\n' +
+          '문의: ' + MOD_CONTACT_EMAIL);
+    return;
+  }
+
   const btn = document.getElementById('submit-btn');
   btn.disabled = true;
   btn.textContent = '올리는 중...';
@@ -2405,30 +2901,94 @@ async function submitPost() {
 // ── 피드 로드 ──
 let unsubscribe = null;
 
+// ★2026-08-06 수정 — 피드가 영영 로딩만 하던 버그
+//   where('date','==') + orderBy('timestamp') 조합은 Firestore 복합 색인이 필요한데
+//   그 색인이 없어서 failed-precondition 이 나고, 기존 코드는 그걸 "불러오는 중"으로
+//   덮어써서 사용자에게는 무한 로딩으로 보였다(헤드리스 렌더로 실측 확인).
+//   ⇒ 색인 없이도 되는 질의(등호 하나)로 폴백하고 정렬은 클라이언트에서 한다.
+//   색인을 만들면 원래 경로가 그대로 살아난다(§오너 할 일 참조).
+function applyFeedSnapshot(snapshot, sortLocally) {
+  const count = snapshot.size;
+  document.getElementById('post-count-badge').textContent = `묵상 ${count}개`;
+  const isToday = currentDateStr === getTodayStr();
+  const dateLabel = isToday ? '오늘' : formatDateShort(currentDateStr);
+  document.getElementById('feed-title').textContent = `${dateLabel} 함께한 묵상 ${count}개`;
+
+  let docs = snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() }));
+  if (sortLocally) {
+    docs.sort((a, b) => {
+      const ta = a.data.timestamp?.toMillis ? a.data.timestamp.toMillis() : 0;
+      const tb = b.data.timestamp?.toMillis ? b.data.timestamp.toMillis() : 0;
+      return tb - ta;   // 최신순
+    });
+  }
+  allPostsCache = docs;
+  renderFilteredFeed();
+}
+
+function loadFeedFallback() {
+  if (unsubscribe) { try { unsubscribe(); } catch(e) {} }
+  unsubscribe = db.collection('meditations')
+    .where('date', '==', currentDateStr)
+    .onSnapshot(
+      snapshot => applyFeedSnapshot(snapshot, true),
+      err => {
+        console.error('loadFeed fallback error', err);
+        document.getElementById('feed-container').innerHTML =
+          `<div class="feed-empty">
+             <div class="feed-empty-icon">⚠️</div>
+             <p>묵상을 불러오지 못했습니다<br>
+               <span style="font-size:0.85em;opacity:0.8">잠시 후 다시 시도해 주세요</span></p>
+             <button class="feed-empty-btn" onclick="loadFeed()">다시 불러오기</button>
+           </div>`;
+      });
+}
+
 function loadFeed() {
   document.getElementById('feed-container').innerHTML = '<div class="loading">불러오는 중...</div>';
 
   unsubscribe = db.collection('meditations')
     .where('date', '==', currentDateStr)
     .orderBy('timestamp', 'desc')
-    .onSnapshot(snapshot => {
-      const count = snapshot.size;
-      document.getElementById('post-count-badge').textContent = `묵상 ${count}개`;
-      const isToday = currentDateStr === getTodayStr();
-      const dateLabel = isToday ? '오늘' : formatDateShort(currentDateStr);
-      document.getElementById('feed-title').textContent = `${dateLabel} 함께한 묵상 ${count}개`;
-
-      // 기능 2: 전역 캐시 업데이트 후 필터 렌더링
-      allPostsCache = snapshot.docs.map(doc => ({ id: doc.id, data: doc.data() }));
-      renderFilteredFeed();
-    }, err => {
-      console.error(err);
-      document.getElementById('feed-container').innerHTML =
-        '<div class="loading">묵상을 불러오는 중입니다...</div>';
-    });
+    .onSnapshot(
+      snapshot => applyFeedSnapshot(snapshot, false),
+      err => {
+        console.error('loadFeed error', err);
+        // 복합 색인 부재 → 색인 없이 되는 질의로 폴백
+        if (err && (err.code === 'failed-precondition' ||
+                    /requires an index/i.test(err.message || ''))) {
+          loadFeedFallback();
+          return;
+        }
+        document.getElementById('feed-container').innerHTML =
+          `<div class="feed-empty">
+             <div class="feed-empty-icon">⚠️</div>
+             <p>묵상을 불러오지 못했습니다<br>
+               <span style="font-size:0.85em;opacity:0.8">잠시 후 다시 시도해 주세요</span></p>
+             <button class="feed-empty-btn" onclick="loadFeed()">다시 불러오기</button>
+           </div>`;
+      });
 }
 
-function renderPost(id, data) {
+// 표시 직전 마스킹 — 필터 도입 이전에 올라온 옛 글을 가린다
+const MOD_TEXT_FIELDS = ['name','church','stop_verse','stop','stay','step','prayer',
+  'thanks1','thanks2','thanks3','declaration','opening_prayer','stop_place',
+  'space_s','space_p','space_a','space_c','space_e'];
+function modMaskPost(data) {
+  const out = Object.assign({}, data);
+  MOD_TEXT_FIELDS.forEach(f => { if (typeof out[f] === 'string') out[f] = modMask(out[f]); });
+  if (typeof out.content === 'string') out.content = modMask(out.content);
+  else if (out.content && typeof out.content === 'object') {
+    out.content = Object.assign({}, out.content);
+    ['free','stop','stay','step'].forEach(f => {
+      if (typeof out.content[f] === 'string') out.content[f] = modMask(out.content[f]);
+    });
+  }
+  return out;
+}
+
+function renderPost(id, rawData) {
+  const data = modMaskPost(rawData);
   const initial = (data.name?.[0] || '?').toUpperCase();
   const time = data.timestamp?.toDate
     ? formatTime(data.timestamp.toDate())
@@ -2439,6 +2999,15 @@ function renderPost(id, data) {
   const isDemo = id.startsWith('demo');
   const deleteBtnHtml = (!isDemo && isFirebaseReady)
     ? `<button class="delete-btn" onclick="deletePost('${id}', '${escHtml(data.name || '')}', '${escHtml(data.userId || '')}')">🗑️ 삭제</button>`
+    : '';
+
+  // 모더레이션: 내 글에는 신고·차단을 붙이지 않는다
+  const _me = modMyPledge();
+  const isMine = (data.userId && _me.userId && data.userId === _me.userId)
+              || (!data.userId && _me.name && data.name === _me.name);
+  const modBtnsHtml = (!isDemo && !isMine)
+    ? `<button class="mod-btn" onclick="reportPost('${id}')">🚩 신고</button>
+       <button class="mod-btn" onclick="modBlockUser('${escHtml(data.userId || '')}','${escHtml(data.name || '')}')">🚫 차단</button>`
     : '';
 
   let contentHtml = '';
@@ -2562,8 +3131,9 @@ function renderPost(id, data) {
           </button>
           ${!isDemo ? `<button class="comment-toggle" onclick="toggleComments('${id}')">💬 <span id="ccount-${id}">0</span></button>` : ''}
         </div>
-        <div style="display:flex;align-items:center;gap:0.25rem;min-width:0">
+        <div style="display:flex;align-items:center;gap:0.25rem;min-width:0;flex-wrap:wrap;justify-content:flex-end">
           <span class="post-scripture-tag">📖 ${escHtml(data.scripture || '')}</span>
+          ${modBtnsHtml}
           ${deleteBtnHtml}
         </div>
       </div>
@@ -2658,22 +3228,36 @@ async function loadComments(postId) {
   try {
     const snap = await db.collection('meditations').doc(postId)
       .collection('comments').orderBy('timestamp', 'asc').limit(30).get();
-    const myUserId = (JSON.parse(localStorage.getItem('wtd_pledge_v1') || '{}')).userId;
+    const _mePledge = modMyPledge();
+    const myUserId = _mePledge.userId;
+    const myName   = _mePledge.name;
     listEl.innerHTML = '';
     if (snap.empty) {
       listEl.innerHTML = '<div class="comment-empty">첫 댓글을 남겨보세요 🙏</div>';
     } else {
+      let shown = 0;
       snap.forEach(doc => {
         const d = doc.data();
+        // 모더레이션: 차단한 사용자·내가 신고한 댓글은 표시하지 않는다
+        if (modIsBlocked(d.userId, d.name)) return;
+        if (modIsReported(`c:${postId}:${doc.id}`)) return;
+        shown++;
         const canDel = myUserId && d.userId && d.userId === myUserId;
+        const isMineC = canDel || (!d.userId && myName && d.name === myName);
         const item = document.createElement('div');
         item.className = 'comment-item';
         item.dataset.commentId = doc.id;
+        item.dataset.uid   = d.userId || '';
+        item.dataset.uname = d.name   || '';
+        item.dataset.text  = (d.text  || '').slice(0, 200);
         item.innerHTML = `<span class="comment-name">${escHtml(d.name)}</span>
-          <span class="comment-text">${escHtml(d.text)}</span>
+          <span class="comment-text">${escHtml(modMask(d.text))}</span>
+          ${!isMineC ? `<button class="comment-mod" onclick="reportComment('${postId}','${doc.id}')" title="신고">🚩</button>
+                        <button class="comment-mod" onclick="modBlockUser('${escHtml(d.userId || '')}','${escHtml(d.name || '')}')" title="차단">🚫</button>` : ''}
           ${canDel ? `<button class="comment-del" onclick="deleteComment('${postId}','${doc.id}',this)" title="삭제">✕</button>` : ''}`;
         listEl.appendChild(item);
       });
+      if (shown === 0) listEl.innerHTML = '<div class="comment-empty">표시할 댓글이 없어요</div>';
     }
     if (countEl) countEl.textContent = snap.size;
   } catch(e) { console.error('loadComments error', e); }
@@ -2687,6 +3271,12 @@ async function submitComment(postId) {
   if (!text) { inputEl.focus(); return; }
   const pledge = JSON.parse(localStorage.getItem('wtd_pledge_v1') || '{}');
   if (!pledge.name) { alert('서약 후 댓글을 달 수 있습니다.'); return; }
+  // ── 모더레이션 ⑴ 금칙어 필터 — 댓글 게시 전 차단 ──
+  if (modScan(text).length) {
+    alert('댓글에 부적절한 표현이 포함되어 있어 등록할 수 없습니다.\n\n' +
+          '서로를 세우는 말로 다듬어 주세요.\n\n문의: ' + MOD_CONTACT_EMAIL);
+    return;
+  }
   inputEl.value = '';
   inputEl.disabled = true;
   try {
@@ -2838,6 +3428,12 @@ function setFeedFilter(filter) {
   renderFilteredFeed();
 }
 
+// 차단한 사용자의 글, 내가 신고한 글은 피드에서 제외한다
+function modVisiblePosts(list) {
+  return list.filter(({ id, data }) =>
+    !modIsBlocked(data.userId, data.name) && !modIsReported('p:' + id));
+}
+
 function renderFilteredFeed() {
   const container = document.getElementById('feed-container');
   const raw = localStorage.getItem('wtd_pledge_v1');
@@ -2871,17 +3467,21 @@ function renderFilteredFeed() {
     return;
   }
 
-  // 전체
-  if (allPostsCache.length === 0) {
+  // 전체 (차단·신고분 제외)
+  const visible = modVisiblePosts(allPostsCache);
+  if (visible.length === 0) {
+    const hiddenCount = allPostsCache.length - visible.length;
     container.innerHTML = `
       <div class="feed-empty">
         <div class="feed-empty-icon">🌅</div>
-        <p>아직 오늘의 묵상이 없어요<br>첫 번째로 나눠보세요!</p>
+        <p>${hiddenCount > 0
+              ? `표시할 묵상이 없어요<br><span style="font-size:0.85em;opacity:0.8">차단·신고로 ${hiddenCount}개가 숨겨져 있어요</span>`
+              : '아직 오늘의 묵상이 없어요<br>첫 번째로 나눠보세요!'}</p>
         <button class="feed-empty-btn" onclick="openForm()">✍️ 묵상 쓰기</button>
       </div>`;
     return;
   }
-  container.innerHTML = allPostsCache.map(({id, data}) => renderPost(id, data)).join('');
+  container.innerHTML = visible.map(({id, data}) => renderPost(id, data)).join('');
   likedPosts.forEach(id => {
     const btn = document.getElementById(`like-${id}`);
     if (btn) btn.classList.add('liked');
