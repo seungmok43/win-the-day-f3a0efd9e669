@@ -72,6 +72,12 @@ service cloud.firestore {
       allow update, delete: if false;   // 처리는 콘솔에서만
     }
 
+    // ── 댓글 컬렉션 그룹 (계정 삭제 시 내가 남의 글에 단 댓글 찾기) ──
+    match /{path=**}/comments/{commentId} {
+      allow read: if true;
+      allow delete: if true;
+    }
+
     // ── 그 밖의 모든 경로는 금지 ─────────────────────────────
     match /{document=**} {
       allow read, write: if false;
